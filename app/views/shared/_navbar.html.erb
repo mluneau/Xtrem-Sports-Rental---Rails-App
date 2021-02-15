@@ -1,0 +1,33 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.zP7n688Jj1P4VDli-Qdu-AHaHa%26pid%3DApi&f=1" %>
+    <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> 
+
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="btn btn-ghost" href="#">
+        <%= link_to "Rent your kit"%>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/mluneau", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Profile", "#", class: "dropdown-item" %>
+            <%= link_to "Equipment", "#", class: "dropdown-item" %>
+            <%= link_to "Bookings", "#", class: "dropdown-item" %>
+            <%= link_to "Messages", "#", class: "dropdown-item" %>
+            <%= link_to "Logout", "#", class: "dropdown-item" %>
+          </div>
+        </li>
+    </ul>
+  </div>
+</div>
