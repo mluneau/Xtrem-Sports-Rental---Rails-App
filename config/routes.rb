@@ -5,5 +5,11 @@ Rails.application.routes.draw do
   resources :equipments do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:edit, :update, :destroy]
+  resources :bookings, only: [] do
+    member { patch :update_rating }
+    member { patch :accept }
+    member { patch :deny }
+    member { patch :cancel }
+  end
+  resource :account, only: [:show]
 end
