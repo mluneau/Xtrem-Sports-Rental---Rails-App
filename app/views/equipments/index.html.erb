@@ -1,9 +1,9 @@
 <% @equipments.each do |equipment| %>
-  <h1><%= equipment.title %></h1>
+  <%= link_to equipment.title, equipment_path(equipment) %>
   <h3>Informations</h3>
   <p><strong>Address: </strong><%= equipment.address %></p>
   <p><strong>Description </strong><%= equipment.description %></p>
   <p><strong>Daily price: </strong><%= equipment.daily_price %></p>
   <p><strong>Sport Category: </strong><%= equipment.sport_category %></p>
-  <p><strong>Owner</strong> <%= equipment.user %></p>
+  <p><strong>Owner</strong> <%= equipment.user.first_name %> <%= equipment.user.last_name %></p>
 <% end %>
