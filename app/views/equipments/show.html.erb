@@ -20,3 +20,15 @@
     <% end %>
   </ul>
 </div>
+
+<div>
+<% if policy(@equipment).edit? %>
+  <%= link_to "Update", edit_equipment_path(@equipment) %>
+<% end %>
+</div>
+
+<div>
+<% if policy(@equipment).destroy? %>
+  <%= link_to "Delete", @equipment, method: :delete, data: { confirm: 'Are you sure?'} %>
+<% end %>
+</div>
