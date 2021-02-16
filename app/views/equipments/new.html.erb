@@ -4,7 +4,7 @@
     <%= f.input :description %>
     <%= f.input :address %>
     <%= f.input :daily_price %>
-    <%= f.input :sport_category %>
+    <%= f.input :sport_category, collection: ApplicationController::SPORT_CATEGORIES %>
     <%= f.submit %>
   <% end %>
 </div>
