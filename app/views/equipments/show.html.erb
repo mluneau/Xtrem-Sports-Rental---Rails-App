@@ -10,3 +10,12 @@
   <h3 class="flex-grow-1">Reviews</h3>
   <%= link_to 'Add a review', new_equipment_booking_path(@equipment), class: 'btn btn-primary' %>
 </div>
+
+<% if policy(@equipment).edit? %>
+  <%= link_to "Update", edit_equipment_path(@equipment) %>
+<% end %>
+
+<% if policy(@equipment).destroy? %>
+  <%= link_to "Delete", equipments_path() %>
+  <% @equipment.destroy %>
+<% end %>
