@@ -1,7 +1,13 @@
-<% @equipments.each do |equipment| %>
-  <%= link_to equipment.title, equipment_path(equipment) %>
-  <h3>Informations</h3>
-  <p><strong>Address: </strong><%= equipment.address %></p>
-  <p><strong>Daily price: </strong><%= equipment.daily_price %></p>
-  <p><strong>Sport Category: </strong><%= equipment.sport_category %></p>
+<div class="container">
+  <% @equipments.each do |equipment| %>
+  <%= link_to equipment_path(equipment), class: 'text-decoration-none' do %>
+  <div class="card-product my-4">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div class="card-product-infos">
+      <h2><%= equipment.title %></h2>
+      <p><%= equipment.description %></p>
+    </div>
+  </div>
+  <% end %>
 <% end %>
+</div>
