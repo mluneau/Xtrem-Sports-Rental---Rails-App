@@ -25,7 +25,7 @@
             <%= link_to "Equipment", "#", class: "dropdown-item" %>
             <%= link_to "Bookings", "#", class: "dropdown-item" %>
             <%= link_to "Messages", "#", class: "dropdown-item" %>
-            <%= link_to "Logout", "#", class: "dropdown-item" %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
     </ul>
