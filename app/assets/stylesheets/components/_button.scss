@@ -17,3 +17,18 @@
   text-decoration: none;
   color:black;
 }
+
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #1EDD88;
+  transition: background 0.3s ease;
+  margin-top: 80px;
+}
+
+.btn-flat:hover {
+  background: #1BCB7F;
+  color: white;
+}
