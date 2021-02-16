@@ -10,7 +10,9 @@
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li>
+        <% if policy(Equipment).create? %>
           <%= link_to "Rent a kit", new_equipment_path, class: "btn btn-ghost" %>
+        <% end %>
       </li>
     </ul>
   </div>
