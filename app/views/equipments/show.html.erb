@@ -1,12 +1,22 @@
-<h1><strong><%= @equipment.title %></strong></h1>
+<div class="container">
+  <h1><strong><%= @equipment.title %></strong></h1>
+  <h3><strong>Informations:</strong></h3>
+  <p><strong>Description:</strong> <%= @equipment.description %></p>
+  <p><strong>Address:</strong> <%= @equipment.address %></p>
+  <p><strong>Price per day:</strong> <%= @equipment.daily_price %></p>
+  <p><strong>Category:</strong> <%= @equipment.sport_category %></p>
+  <div class="d-flex pb-3">
+    <%= link_to 'Create booking', new_equipment_booking_path(@equipment), class: 'btn btn-primary' %>
+  </div>
 
-<h3><strong>Informations:</strong></h3>
-<p><strong>Description:</strong> <%= @equipment.description %></p>
-<p><strong>Address:</strong> <%= @equipment.address %></p>
-<p><strong>Price per day:</strong> <%= @equipment.daily_price %></p>
-<p><strong>Category:</strong> <%= @equipment.sport_category %></p>
+  <h3>Bookings</h3>
+  <ul>
+    <% @equipment.bookings.each do |booking| %>
 
-<div class="d-flex pb-3">
-  <h3 class="flex-grow-1">Reviews</h3>
-  <%= link_to 'Add a review', new_equipment_booking_path(@equipment), class: 'btn btn-primary' %>
+      <li>
+        <p><strong>Start date: </strong><%= booking.start_date %></p>
+        <p><strong>Booker: </strong><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+      </li>
+    <% end %>
+  </ul>
 </div>
