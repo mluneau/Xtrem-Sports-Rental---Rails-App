@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.zP7n688Jj1P4VDli-Qdu-AHaHa%26pid%3DApi&f=1" %>
-    <% end %>
+        <%= image_tag "https://res.cloudinary.com/dcj85wvte/image/upload/v1613468890/logo_size_ce3zg1.jpg" %>
+  <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,9 +10,7 @@
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li>
-        <button type="button" class="btn btn-ghost" data-toggle="modal" data-target="#exampleModal">
-          Rent a kit
-        </button>
+          <%= link_to "Rent a kit", new_equipment_path, class: "btn btn-ghost" %>
       </li>
     </ul>
   </div>
@@ -27,7 +25,7 @@
             <%= link_to "Equipment", "#", class: "dropdown-item" %>
             <%= link_to "Bookings", "#", class: "dropdown-item" %>
             <%= link_to "Messages", "#", class: "dropdown-item" %>
-            <%= link_to "Logout", "#", class: "dropdown-item" %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
     </ul>
