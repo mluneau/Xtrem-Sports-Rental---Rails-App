@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :equipments do
     resources :bookings, only: [:new, :create]
   end
+
   resources :bookings, only: [] do
     member { patch :update_rating }
     member { patch :accept }

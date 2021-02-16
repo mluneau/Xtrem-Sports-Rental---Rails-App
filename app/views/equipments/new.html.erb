@@ -1,0 +1,10 @@
+<div class="container">
+  <%= simple_form_for @equipment, url: equipments_path do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :address %>
+    <%= f.input :daily_price %>
+    <%= f.input :sport_category %>
+    <%= f.submit %>
+  <% end %>
+</div>

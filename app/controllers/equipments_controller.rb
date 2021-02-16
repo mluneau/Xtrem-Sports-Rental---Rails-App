@@ -1,16 +1,18 @@
 class EquipmentsController < ApplicationController
   before_action :find_equipment, only: [:edit, :show, :update, :destroy]
+
   def index
     @equipments = Equipment.all
   end
 
   def new
     @equipment = Equipment.new
+    @user = current_user
   end
 
   def create
     @equipment = Equipment.new(equipment_params)
-    @equipment.user = @user
+    @equipment.user = current_user
     if @equipment.save
       redirect_to equipments_path
     else
@@ -40,6 +42,6 @@ class EquipmentsController < ApplicationController
 
   def equipment_params
     params.require(:equipment)
-          .permit([:title, :description, :address, :latitude, :longitude, :daily_price, :sport_category])
+          .permit([:title, :description, :address, :daily_price, :sport_category])
   end
 end
