@@ -25,6 +25,7 @@ class EquipmentsController < ApplicationController
   end
 
   def show
+    authorize @equipment
   end
 
   def update
