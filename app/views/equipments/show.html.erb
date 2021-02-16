@@ -11,11 +11,14 @@
   <%= link_to 'Add a review', new_equipment_booking_path(@equipment), class: 'btn btn-primary' %>
 </div>
 
+<div>
 <% if policy(@equipment).edit? %>
   <%= link_to "Update", edit_equipment_path(@equipment) %>
 <% end %>
+</div>
 
+<div>
 <% if policy(@equipment).destroy? %>
-  <%= link_to "Delete", equipments_path() %>
-  <% @equipment.destroy %>
+  <%= link_to "Delete", @equipment, method: :delete, data: { confirm: 'Are you sure?'} %>
 <% end %>
+</div>
