@@ -8,14 +8,12 @@ class EquipmentsController < ApplicationController
   def new
     @equipment = Equipment.new
     authorize @equipment
-    @user = user
-
   end
 
   def create
-    authorize @equipment
     @equipment = Equipment.new(equipment_params)
-    @equipment.user = user
+    authorize @equipment
+    @equipment.user = current_user
     if @equipment.save
       redirect_to equipments_path
     else
