@@ -10,6 +10,10 @@ class ApplicationPolicy
     false
   end
 
+  def categories?
+    true
+  end
+
   def show?
     true
   end
