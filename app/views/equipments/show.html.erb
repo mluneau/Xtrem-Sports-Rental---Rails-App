@@ -1,34 +1,24 @@
-<div class="container">
-  <h1><strong><%= @equipment.title %></strong></h1>
-  <h3><strong>Informations:</strong></h3>
-  <p><strong>Description:</strong> <%= @equipment.description %></p>
-  <p><strong>Address:</strong> <%= @equipment.address %></p>
-  <p><strong>Price per day:</strong> <%= @equipment.daily_price %></p>
-  <p><strong>Category:</strong> <%= @equipment.sport_category %></p>
-  <div class="d-flex pb-3">
-    <%= link_to 'Create booking', new_equipment_booking_path(@equipment), class: 'btn btn-primary' %>
-  </div>
+<div class="container mx-20">
+    <h1 class="pl-5 text-center"><strong><%= @equipment.title %></strong></h1>
 
-  <h3>Bookings</h3>
-  <ul>
-    <% @equipment.bookings.each do |booking| %>
-
-      <li>
-        <p><strong>Start date: </strong><%= booking.start_date %></p>
-        <p><strong>Booker: </strong><%= booking.user.first_name %> <%= booking.user.last_name %></p>
-      </li>
-    <% end %>
-  </ul>
+    <div class="card-equipment mx-30">
+      <img src="https://images.unsplash.com/photo-1471247511763-88a722fc9919?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1190&q=80" />
+      <div class="card-equipment-infos">
+        <div>
+          <h2><strong>Informations</strong></h2>
+          <p><strong>Description:</strong> <%= @equipment.description %></p>
+          <p><strong>Address:</strong> <%= @equipment.address %></p>
+          <p><strong>Category:</strong> <%= @equipment.sport_category %></p>
+        </div>
+        <h2 class="card-equipment-pricing"><%= @equipment.daily_price %>€ / day</h2>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-equipment-user avatar-bordered" />
+      </div>
+      <div class="d-flex pb-3 pr-3">
+        <h3 class="flex-grow-1"></h3>
+        <%= link_to 'Create Booking', new_equipment_booking_path(@equipment), class: 'btn btn-primary' %>
+      </div>
+    </div>
 </div>
 
-<div>
-<% if policy(@equipment).edit? %>
-  <%= link_to "Update", edit_equipment_path(@equipment) %>
-<% end %>
-</div>
 
-<div>
-<% if policy(@equipment).destroy? %>
-  <%= link_to "Delete", @equipment, method: :delete, data: { confirm: 'Are you sure?'} %>
-<% end %>
-</div>
+
