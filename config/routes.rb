@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     member { patch :cancel }
   end
   resource :account, only: [:show]
+
+  get "categories", to: "pages#categories"
 end
