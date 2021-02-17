@@ -4,6 +4,7 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 0 200px;
+  height: fit-content;
 }
 
 .card-equipment > img {
@@ -38,4 +39,9 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.pl-5 {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }

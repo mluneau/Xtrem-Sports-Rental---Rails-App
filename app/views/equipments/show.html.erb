@@ -1,8 +1,27 @@
 <div class="container mx-20">
+  
+  <div class="d-flex justify-content-around">
     <h1 class="pl-5 text-center"><strong><%= @equipment.title %></strong></h1>
+    <% if policy(@equipment).edit? %>	
+      <%= link_to "Update", edit_equipment_path(@equipment) %>	
+    <% end %>	
 
+
+
+hello
+
+
+
+    <p><% if policy(@equipment).destroy? %>	
+      <%= link_to  @equipment, method: :delete, data: { confirm: 'Are you sure?'} do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+    <% end %></p>
+  </div>
+
+  <div class="d-flex justify-content-around" >
     <div class="card-equipment mx-30">
-      <img src="https://images.unsplash.com/photo-1471247511763-88a722fc9919?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1190&q=80" />
+      <img src="https://images.unsplash.com/photo-1471247511763-88a722fc9919? ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1190&q=80" />
       <div class="card-equipment-infos">
         <div>
           <h2><strong>Informations</strong></h2>
@@ -18,17 +37,25 @@
         <%= link_to 'Create Booking', new_equipment_booking_path(@equipment), class: 'btn btn-primary' %>
       </div>
     </div>
-</div>
 
-  <h3>Bookings</h3>
-  <ul>
-    <% @equipment.bookings.each do |booking| %>
-      <li>
-        <p><strong>Start date: </strong><%= booking.start_date %></p>
-        <p><strong>Booker: </strong><%= booking.user.first_name %><%= booking.user.last_name %></p>
-      </li>       
-    <% end %>
-  </ul>
+    <div class="list-group">
+      <h3>Bookings</h3>
+      <% @equipment.bookings.each do |booking| %>
+        <div class="d-flex w-100 justify-content-between">
+          <a class="list-group-item list-group-item-action active" aria-current="true">
+            <h6 class="mb-1"><strong>Booker: </strong><%= booking.user.first_name%><%= booking.user.last_name %></h6>
+            <p class="mb-1">
+              <strong>Start date: </strong><%= booking.start_date %>
+            </p>
+          </a>
+        </div>  
+      <% end %>
+    </div>
+      
+    </div>
+  </div>
+
+</div>
 
 <div>	
   <% if policy(@equipment).edit? %>	
@@ -38,6 +65,8 @@
 
 <div>	
   <% if policy(@equipment).destroy? %>	
-    <%= link_to "Delete", @equipment, method: :delete, data: { confirm: 'Are you sure?'} %>	
+    <%= link_to  @equipment, method: :delete, data: { confirm: 'Are you sure?'} do %>
+      <i class="fa fa-trash"></i>
+    <% end %>
   <% end %>	
 </div>
