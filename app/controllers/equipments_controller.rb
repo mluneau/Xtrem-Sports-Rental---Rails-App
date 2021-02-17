@@ -29,7 +29,7 @@ class EquipmentsController < ApplicationController
     authorize @equipment
     @equipment.user = current_user
     if @equipment.save
-      redirect_to equipments_path
+      redirect_to equipment_path(@equipment)
     else
       render :new
     end
