@@ -2,13 +2,20 @@ class EquipmentsController < ApplicationController
   before_action :find_equipment, only: [:edit, :show, :update, :destroy]
 
   def index
-
     if params[:category]
       @equipments = policy_scope(Equipment.where(sport_category: params[:category]))
       @category = params[:category]
     else
       @category = "all"
       @equipments = policy_scope(Equipment)
+    end
+    @markers = @equipments.geocoded.map do |equipment|
+      {
+        lat: equipment.latitude,
+        lng: equipment.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { equipment: equipment }),
+        image_url: helpers.asset_url('logo.png')
+      }
     end
   end
 
