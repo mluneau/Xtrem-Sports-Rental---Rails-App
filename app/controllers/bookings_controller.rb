@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.equipment = @equipment
     if @booking.save
-      redirect_to equipments_path
+      redirect_to equipment_path(@equipment)
     else
       render :new
     end
