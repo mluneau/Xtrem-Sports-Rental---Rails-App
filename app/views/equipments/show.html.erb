@@ -9,19 +9,19 @@
         <% else %>
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <% end %>
-        
+
         <div class="card-equipment-infos">
           <div>
             <p><strong>Description:</strong> <%= @equipment.description %></p>
             <p><strong>Address:</strong> <%= @equipment.address %></p>
-            <p><strong>Category:</strong> <%= @equipment.sport_category %></p>
+            <p><strong>Category</strong> <%= @equipment.sport_category %></p>
           </div>
           <h2 class="card-equipment-pricing"><%= @equipment.daily_price %>€ / day</h2>
           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-equipment-user avatar-bordered" />
         </div>
         <div class="d-flex justify-content-between px-3 pb-3">
           <%= link_to 'Back', equipments_path(category: @equipment.sport_category), class: 'btn btn-primary' %>
-          
+
           <%= link_to 'Create Booking', new_equipment_booking_path(@equipment), class: 'btn btn-primary' %>
         </div>
       </div>
@@ -32,26 +32,42 @@
       <% @equipment.bookings.each do |booking| %>
         <div class="w-100 mt-1">
           <a class="list-group-item list-group-item-action active" aria-current="false">
-            <h6 class="mb-1"><strong>Booker: </strong><%= booking.user.first_name%><%= booking.user.last_name %></h6>
-            <p class="mb-1">
-              <strong>Start date: </strong><%= booking.start_date %>
+            <p>
+              <strong>Booker </strong>
+              <br>
+              <%= booking.user.first_name%> <%= booking.user.last_name %>
+            </p>
+            <p>
+              <strong>Start date </strong>
+               <br>
+               <%= booking.start_date.day %>/<%= booking.start_date.month %>/<%= booking.start_date.year %>
+            </p>
+            <p>
+              <strong>Duration: </strong>
+              <br>
+              <%= (booking.end_date - booking.start_date).to_i/(3600*24) %> days
+            </p>
+            <p>
+              <strong>Total price: </strong>
+              <br>
+              <%= (booking.end_date - booking.start_date).to_i/(3600*24) * @equipment.daily_price %> €
             </p>
           </a>
-        </div>  
+        </div>
       <% end %>
     </div>
-      
+
     </div>
   </div>
 
 </div>
 
 
-<% if policy(@equipment).edit? %>	
-      <%= link_to "Update", edit_equipment_path(@equipment) %>	
-    <% end %>	
+<% if policy(@equipment).edit? %>
+      <%= link_to "Update", edit_equipment_path(@equipment) %>
+    <% end %>
 
-    <p><% if policy(@equipment).destroy? %>	
+    <p><% if policy(@equipment).destroy? %>
       <%= link_to  @equipment, method: :delete, data: { confirm: 'Are you sure?'} do %>
         <i class="fa fa-trash"></i>
       <% end %>
