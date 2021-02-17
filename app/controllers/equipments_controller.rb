@@ -7,6 +7,7 @@ class EquipmentsController < ApplicationController
       @equipments = policy_scope(Equipment.where(sport_category: params[:category]))
       @category = params[:category]
     else
+      @category = "all"
       @equipments = policy_scope(Equipment)
     end
   end
