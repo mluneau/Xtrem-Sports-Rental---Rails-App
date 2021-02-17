@@ -6,5 +6,8 @@
 @import "button";
 @import "footer";
 @import "cards";
+<<<<<<< HEAD
 @import "tabs";
+=======
 @import "map";
+>>>>>>> 1a709c94f6ad2a6d7d0e644c35eb84c11b7c1295
