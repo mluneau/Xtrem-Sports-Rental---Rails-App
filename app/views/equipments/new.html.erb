@@ -5,6 +5,7 @@
     <%= f.input :address %>
     <%= f.input :daily_price %>
     <%= f.input :sport_category, collection: ApplicationController::SPORT_CATEGORIES %>
+    <%= f.input :photo, as: :file %>
     <%= f.submit %>
   <% end %>
 </div>
