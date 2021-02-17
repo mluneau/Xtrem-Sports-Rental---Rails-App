@@ -1,13 +1,21 @@
 <div class="container">
-  <% @equipments.each do |equipment| %>
-  <%= link_to equipment_path(equipment), class: 'text-decoration-none' do %>
-  <div class="card-product my-4">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <div class="card-product-infos">
-      <h2><%= equipment.title %></h2>
-      <p><%= equipment.description %></p>
-    </div>
+  <!-- <div class="row"> -->
+  <h3 class="mt-4 mb-2">Browse other categories</h3>
+  <div class="d-flex justify-content-around">
+    <% ApplicationController::SPORT_CATEGORIES.each do |sport_category| %>
+      <%= link_to sport_category, equipments_path(category: sport_category), class: 'btn btn-ghost' %>
+    <% end %>
   </div>
+  <h3 class="mt-4 mb-2"><%= @category.capitalize %> kits available to rent: </h3>
+  <% @equipments.each do |equipment| %>
+    <%= link_to equipment_path(equipment), class: 'text-decoration-none' do %>
+      <div class="card-product my-4">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h2><%= equipment.title %></h2>
+          <p><%= equipment.description %></p>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 </div>

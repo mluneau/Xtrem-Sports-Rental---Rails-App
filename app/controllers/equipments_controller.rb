@@ -2,8 +2,10 @@ class EquipmentsController < ApplicationController
   before_action :find_equipment, only: [:edit, :show, :update, :destroy]
 
   def index
+
     if params[:category]
       @equipments = policy_scope(Equipment.where(sport_category: params[:category]))
+      @category = params[:category]
     else
       @equipments = policy_scope(Equipment)
     end
