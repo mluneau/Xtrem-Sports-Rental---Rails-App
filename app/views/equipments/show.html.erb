@@ -5,7 +5,7 @@
       <h2 class="mt-1"><%= @equipment.title %>  </h2>
       <div class="card-equipment">
         <% if @equipment.photo.attached? %>
-          <%= cl_image_tag equipment.photo.key, height: 300, width: 400 %>
+          <%= cl_image_tag @equipment.photo.key, height: 300, width: 400 %>
         <% else %>
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <% end %>
