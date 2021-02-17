@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container rounded">
   <h5><strong><%= link_to equipment.title, equipment_path(equipment) %></strong></h5>
   <% if equipment.photo.attached? %>
-            <%= cl_image_tag equipment.photo.key, height: 300, width: 400 %>
-          <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg", style="width: 120px; height: 120px;"/>
-          <% end %>
+        <%= cl_image_tag equipment.photo.key, height: 120, width: 120 %>
+    <% else %>
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg", style="width: 120px; height: 120px;"/>
+    <% end %>
   <div>
   <br>
     <p>Rent it for: <strong><%= equipment.daily_price %>€ /day</strong></p>
