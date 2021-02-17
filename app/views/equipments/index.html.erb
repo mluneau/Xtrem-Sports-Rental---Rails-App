@@ -2,6 +2,7 @@
   <!-- <div class="row"> -->
   <h3 class="mt-4 mb-2">Browse <%= @category == "all" ? "specific" : "other" %> categories</h3>
   <div class="d-flex justify-content-around">
+    <%= link_to "All", equipments_path, class: 'btn btn-ghost' %>
     <% ApplicationController::SPORT_CATEGORIES.each do |sport_category| %>
       <%= link_to sport_category, equipments_path(category: sport_category), class: 'btn btn-ghost' %>
     <% end %>
