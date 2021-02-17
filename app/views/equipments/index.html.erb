@@ -13,7 +13,13 @@
   <% @equipments.each do |equipment| %>
     <%= link_to equipment_path(equipment), class: 'text-decoration-none' do %>
       <div class="card-product my-4">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <% if equipment.photo.attached? %>
+          <%= cl_image_tag equipment.photo.key, height: 300, width: 400 %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <% end %>
+
+
         <div class="card-product-infos">
           <h2><%= equipment.title %></h2>
           <p><%= equipment.description %></p>
