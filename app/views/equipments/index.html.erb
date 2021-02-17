@@ -21,7 +21,7 @@
           <% end %>
 
           <div class="card-product-infos">
-            <h2><%= equipment.title %></h2>
+            <h2><%= link_to equipment.title, equipment_path(equipment) %></h2>
             <p><%= equipment.description %></p>
           </div>
         </div>
