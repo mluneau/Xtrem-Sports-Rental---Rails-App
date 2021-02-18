@@ -1,6 +1,9 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: white;
+  background-color: transparent !important;
+  position: fixed;
+  z-index: 999;
+  width: 100vw;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -13,9 +16,16 @@
   margin-left: 8px;
 }
 
+.home-navbar .nav-link{
+  color: white !important;
+}
+
+.white-navbar {
+  background-color: #fff !important;
+}
+
 .navbar-lewagon .nav-link{
-  // font-weight: 600;
-  color: black;
+  // color:white !important;
   text-decoration: none;
   transition: opacity 0.3s ease;
   opacity: 0.8;
