@@ -10,6 +10,10 @@ class ApplicationPolicy
     true
   end
 
+  def dashboard    
+    false
+  end
+
   def categories?
     true
   end

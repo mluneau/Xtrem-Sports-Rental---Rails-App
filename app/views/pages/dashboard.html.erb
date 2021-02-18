@@ -1,16 +1,57 @@
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Profile</a>
+    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Bookins</a>
+    <a class="nav-link" id="my_bookings-tab" data-toggle="tab" href="#my_bookings" role="tab" aria-controls="my_bookings" aria-selected="false">My Bookings</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">My Equipment</a>
+    <a class="nav-link" id="my_equipment-tab" data-toggle="tab" href="#my_equipment" role="tab" aria-controls="my_equipment" aria-selected="false">My equipment</a>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+  <div class="tab-pane fade show active mt-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <h3 class="mt-4 mb-2 ml-4"> Profile: </h3> 
+    <div class="card-profile ml-4">    
+      <% if current_user.avatar.attached?  %>
+        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"   aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, height: 300, width: 300, crop: :fill %>" />
+      <% else %>
+        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"   aria-expanded="false" src="https://creai-grand-est.fr/bundles/admin/images/user-empty-avatar.png" />
+      <% end %>
+      <br>
+      <%= @current_user.first_name %> <%= @current_user.last_name %>
+    </div>
+  
+  </div>
+  
+  
+  <div class="tab-pane fade mt-5" id="my_bookings" role="tabpanel" aria-labelledby="my_bookings-tab">
+  <h1>My Bookings</h1>
+  </div>
+  
+  
+  
+  
+  <div class="tab-pane fade mt-5" id="my_equipment" role="tabpanel" aria-labelledby="my_equipment-tab">
+    <h3 class="mt-4 mb-2 ml-4"> My equipment: </h3> 
+    <% @equipments.each do |equipment| %>
+        <div class="card-product mt-2 ml-4">
+          <% if equipment.photo.attached? %>
+            <%= cl_image_tag equipment.photo.key %>
+          <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <% end %>
+
+          <div class="card-product-infos">
+            <h2><%= link_to equipment.title, equipment_path(equipment) %></h2>
+            <p><%= equipment.description %></p>
+          </div>
+        </div>
+
+    <% end %>
+
+  </div>
 </div>
+
+
+
