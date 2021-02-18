@@ -18,6 +18,10 @@ class BookingsController < ApplicationController
     end
   end
 
+  def show
+    authorize @booking
+  end
+
   private
 
   def find_equipment
