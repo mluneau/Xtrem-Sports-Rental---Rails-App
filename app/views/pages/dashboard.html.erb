@@ -11,11 +11,27 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active mt-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-  <h1>Profile</h1>
+    <h3 class="mt-4 mb-2 ml-4"> Profile: </h3> 
+    <div class="card-profile ml-4">    
+      <% if current_user.avatar.attached?  %>
+        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"   aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, height: 300, width: 300, crop: :fill %>" />
+      <% else %>
+        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"   aria-expanded="false" src="https://creai-grand-est.fr/bundles/admin/images/user-empty-avatar.png" />
+      <% end %>
+      <br>
+      <%= @current_user.first_name %> <%= @current_user.last_name %>
+    </div>
+  
   </div>
+  
+  
   <div class="tab-pane fade mt-5" id="my_bookings" role="tabpanel" aria-labelledby="my_bookings-tab">
   <h1>My Bookings</h1>
   </div>
+  
+  
+  
+  
   <div class="tab-pane fade mt-5" id="my_equipment" role="tabpanel" aria-labelledby="my_equipment-tab">
     <h3 class="mt-4 mb-2 ml-4"> My equipment: </h3> 
     <% @equipments.each do |equipment| %>
