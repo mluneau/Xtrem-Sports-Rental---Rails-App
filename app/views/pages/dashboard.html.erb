@@ -14,9 +14,9 @@
     <h3 class="mt-4 mb-2 ml-4"> Profile: </h3> 
     <div class="card-profile ml-4">    
       <% if current_user.avatar.attached?  %>
-        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"   aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, height: 300, width: 300, crop: :fill %>" />
+        <img class="avatar-profile" src="<%= cl_image_path current_user.avatar.key, height: 300, width: 300,  crop: :fill %>" border-radius= 50px />
       <% else %>
-        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"   aria-expanded="false" src="https://creai-grand-est.fr/bundles/admin/images/user-empty-avatar.png" />
+        <img class="avatar" src="https://creai-grand-est.fr/bundles/admin/images/user-empty-avatar.png"/>
       <% end %>
       <br>
       <%= @current_user.first_name %> <%= @current_user.last_name %>
