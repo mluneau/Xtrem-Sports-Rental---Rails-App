@@ -13,7 +13,11 @@
 
   <body>
     <%= render 'shared/navbar' %>
-    <div class="custom-container">
+    <% if current_page?('/') %>
+      <div class="custom-container" style="padding-top: 0 !important">
+    <% else %>
+      <div class="custom-container">
+    <% end %>
     <%= yield %>
     </div>
     </div>
