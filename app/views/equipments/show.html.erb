@@ -36,15 +36,15 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
-                   <%= form_for [@equipment, Booking.new] do |f| %>
-                    <%= f.date_field :start_date, placeholder: "start_date" %>
-                    <%= f.date_field :end_date, placeholder: "end_date" %>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <%= f.submit class: 'btn btn-primary' %>
-                  <% end %>
+                <div class="modal-body d-flex justify-content-center">
+                   <%= simple_form_for [@equipment, Booking.new] do |f| %>
+                     <%= f.input :start_date, as: :hidden, input_html: {id: "range_start", style: "display: none;"} %>
+                     <%= f.input :end_date, as: :hidden, input_html: {id: "range_end"}%>
+                     <div class="d-flex justify-content-between">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                       <%= f.submit class: 'btn btn-primary' %>
+                     </div>
+                   <% end %>
                 </div>
               </div>
             </div>

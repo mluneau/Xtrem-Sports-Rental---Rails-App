@@ -1,0 +1,7 @@
+<div class="d-flex justify-content-center mt-10">
+  <%= simple_form_for [@equipment, @booking] do |f| %>
+    <%= f.input  :start_date, as: :hidden, input_html: {id: "range_start", style: "display: none;"} %>
+    <%= f.input  :end_date, as: :hidden, input_html: {id: "range_end"}%>
+    <%= f.submit  class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -24,7 +24,8 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/init_mapbox';
-
+import { initFlatPickr } from "../plugins/flatpickr";
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
+  initFlatPickr();
 })
