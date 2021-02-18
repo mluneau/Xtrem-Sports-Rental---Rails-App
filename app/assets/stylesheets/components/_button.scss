@@ -18,6 +18,20 @@
   color:black;
 }
 
+.btn-ghost-selected {
+  color: white;
+  background: #4A4A4A;
+  border: 1px solid #white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+  &:hover {
+    color: white;
+  }
+}
 
 .btn-flat {
   color: white;

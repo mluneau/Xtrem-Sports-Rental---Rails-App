@@ -1,12 +1,11 @@
-<div class="container">
-  <h3 class="mt-4 mb-2">Browse <%= @category == "all" ? "specific" : "other" %> categories</h3>
+<div class="container mt-4">
   <!-- browse buttons -->
   <div class="d-flex justify-content-around">
     <% unless @category == "all" %>
       <%= link_to "All", equipments_path, class: 'btn btn-ghost' %>
     <% end %>
     <% ApplicationController::SPORT_CATEGORIES.each do |sport_category| %>
-      <%= link_to sport_category, equipments_path(category: sport_category), class: 'btn btn-ghost' %>
+      <%= link_to sport_category, equipments_path(category: sport_category), class: "btn btn-ghost#{'-selected' if params[:category] == sport_category}" %>
     <% end %>
   </div>
   <h3 class="mt-4 mb-2"><%= @category.capitalize %> kits available to rent: </h3>
@@ -14,7 +13,7 @@
     <div class="row">
     <div class="col-4">
       <% @equipments.each do |equipment| %>
-        <div class="card-product mt-2">
+        <div class="card-product mt-2" data-equipment-id="<%= equipment.id %>">
           <% if equipment.photo.attached? %>
             <%= cl_image_tag equipment.photo.key %>
           <% else %>
