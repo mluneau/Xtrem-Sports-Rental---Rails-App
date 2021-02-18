@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   resource :account, only: [:show]
 
   get "categories", to: "pages#categories"
+  get "dashboard", to: "pages#dashboard"
 end
