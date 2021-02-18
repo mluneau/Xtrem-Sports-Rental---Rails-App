@@ -17,7 +17,14 @@
             <p><strong>Category</strong> <%= @equipment.sport_category %></p>
           </div>
           <h2 class="card-equipment-pricing"><%= @equipment.daily_price %>€ / day</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-equipment-user avatar-bordered" />
+          <% if @equipment.user.avatar.attached?  %>
+            <img class="card-equipment-user avatar-bordered" src="<%= cl_image_path @equipment.user.avatar.key, height: 300, width: 300,  crop: :fill %>" border-radius= 50px />
+          <% else %>
+            <img class="card-equipment-user avatar-bordered" src="https://creai-grand-est.fr/bundles/admin/images/user-empty-avatar.png"/>
+          <% end %>
+
+          <!--  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-equipment-user avatar-bordered" /> -->
+        
         </div>
         <div class="d-flex justify-content-between px-3 pb-3">
           <%= link_to 'Back', equipments_path(category: @equipment.sport_category), class: 'btn btn-primary' %>
