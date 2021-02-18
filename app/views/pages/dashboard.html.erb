@@ -17,6 +17,25 @@
   <h1>My Bookings</h1>
   </div>
   <div class="tab-pane fade mt-5" id="my_equipment" role="tabpanel" aria-labelledby="my_equipment-tab">
-  <h1>My Equipment</h1>
+    <h3 class="mt-4 mb-2 ml-4"> My equipment: </h3> 
+    <% @equipments.each do |equipment| %>
+        <div class="card-product mt-2 ml-4">
+          <% if equipment.photo.attached? %>
+            <%= cl_image_tag equipment.photo.key %>
+          <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <% end %>
+
+          <div class="card-product-infos">
+            <h2><%= link_to equipment.title, equipment_path(equipment) %></h2>
+            <p><%= equipment.description %></p>
+          </div>
+        </div>
+
+    <% end %>
+
   </div>
 </div>
+
+
+

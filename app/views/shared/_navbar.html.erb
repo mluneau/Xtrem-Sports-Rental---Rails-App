@@ -19,7 +19,9 @@
           <%= link_to "Share my gear", new_equipment_path(), class: "nav-link" %>
         <% end %>
       </li>
-      <li><%=  current_user.first_name if user_signed_in? %></li>
+    
+      <!-- <li><%=  current_user.first_name if user_signed_in? %></li> -->
+    
       <li class="nav-item dropdown">
         <% if user_signed_in? && current_user.avatar.attached?  %>
           <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, height: 300, width: 300, crop: :fill %>" />
