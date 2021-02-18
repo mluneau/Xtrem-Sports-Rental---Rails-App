@@ -7,4 +7,8 @@ class BookingPolicy < ApplicationPolicy
   def create?
     return true
   end
+
+  def show?
+    record.user == user || record.equipment.user == user
+  end
 end

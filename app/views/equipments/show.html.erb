@@ -30,6 +30,7 @@
     <div class="list-group">
       <h2>Bookings</h2>
       <% @equipment.bookings.each do |booking| %>
+        <% if policy(booking).show? %>
         <div class="w-100 mt-1">
           <a class="list-group-item list-group-item-action active" aria-current="false">
             <p>
@@ -54,6 +55,7 @@
             </p>
           </a>
         </div>
+        <% end %>
       <% end %>
     </div>
 
