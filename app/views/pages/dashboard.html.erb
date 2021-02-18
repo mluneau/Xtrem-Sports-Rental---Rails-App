@@ -9,6 +9,7 @@
     <a class="nav-link" id="my_equipment-tab" data-toggle="tab" href="#my_equipment" role="tab" aria-controls="my_equipment" aria-selected="false">My equipment</a>
   </li>
 </ul>
+
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active mt-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <h3 class="mt-4 mb-2 ml-4"> Profile: </h3> 
@@ -27,6 +28,23 @@
   
   <div class="tab-pane fade mt-5" id="my_bookings" role="tabpanel" aria-labelledby="my_bookings-tab">
   <h1>My Bookings</h1>
+
+  <% @bookings.each do |booking| %>
+        <div class="card-product mt-2 ml-4">
+          <% if booking.equipment.photo.attached? %>
+            <%= cl_image_tag booking.equipment.photo.key %>
+          <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <% end %>
+
+          <div class="card-product-infos">
+            <h2><%= link_to booking.equipment.title, equipment_path(booking) %></h2>
+            <p><%= booking.equipment.description %></p>
+          </div>
+        </div>
+
+    <% end %>
+
   </div>
   
   

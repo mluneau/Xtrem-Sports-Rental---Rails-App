@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <% if current_page?("/") %> home-navbar <% end %> <% unless current_page?("/") %> white-navbar <% end %>">
   <%= link_to "/", class: "navbar-brand" do %>
         <%= image_tag "https://res.cloudinary.com/dcj85wvte/image/upload/v1613468890/logo_size_ce3zg1.jpg" %>
   <% end %>

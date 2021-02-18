@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @equipments = policy_scope(Booking.where(user_id: current_user))
+    @bookings = policy_scope(Booking.where(user_id: current_user))
     @equipments = policy_scope(Equipment.where(user_id: current_user))
   end
 
