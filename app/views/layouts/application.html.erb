@@ -13,8 +13,13 @@
 
   <body>
     <%= render 'shared/navbar' %>
+    <div class="custom-container">
     <%= yield %>
+    </div>
+    </div>
     <%= render 'shared/flashes' %>
-    <%= render 'shared/footer' %>
+    <% unless current_page?("/") %>
+      <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>
