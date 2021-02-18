@@ -37,3 +37,28 @@ rossi = URI.open("https://www.precisionski.fr/68970-zoom_popin/pack-ski-rossigno
 rossignol = Equipment.new(title: "Ski Rossignol!!!", description: "Enjoy the puff this weekend with my skis. Brand new, 2021. Level: expert", address: "Courmayeur", daily_price: 15, user: nico, sport_category: "Ski")
 rossignol.photo.attach(io: rossi, filename: 'image.png', content_type: 'image/png')
 rossignol.save!
+
+rossi = URI.open("https://www.precisionski.fr/68970-zoom_popin/pack-ski-rossignol-experience-84ai-w-xp-w11-gw.jpg")
+rossignol = Equipment.new(title: "Ski Rossignol!!!", description: "Enjoy the puff this weekend with my skis. Brand new, 2021. Level: expert", address: "Londres", daily_price: 15, user: nico, sport_category: "Ski")
+rossignol.photo.attach(io: rossi, filename: 'image.png', content_type: 'image/png')
+rossignol.save!
+
+rossi = URI.open("https://www.precisionski.fr/68970-zoom_popin/pack-ski-rossignol-experience-84ai-w-xp-w11-gw.jpg")
+rossignol = Equipment.new(title: "Ski Rossignol!!!", description: "Enjoy the puff this weekend with my skis. Brand new, 2021. Level: expert", address: "Rome", daily_price: 15, user: nico, sport_category: "Ski")
+rossignol.photo.attach(io: rossi, filename: 'image.png', content_type: 'image/png')
+rossignol.save!
+
+rossi = URI.open("https://www.precisionski.fr/68970-zoom_popin/pack-ski-rossignol-experience-84ai-w-xp-w11-gw.jpg")
+rossignol = Equipment.new(title: "Ski Rossignol!!!", description: "Enjoy the puff this weekend with my skis. Brand new, 2021. Level: expert", address: "Berlin", daily_price: 15, user: nico, sport_category: "Ski")
+rossignol.photo.attach(io: rossi, filename: 'image.png', content_type: 'image/png')
+rossignol.save!
+
+rossi = URI.open("https://www.precisionski.fr/68970-zoom_popin/pack-ski-rossignol-experience-84ai-w-xp-w11-gw.jpg")
+rossignol = Equipment.new(title: "Ski Rossignol!!!", description: "Enjoy the puff this weekend with my skis. Brand new, 2021. Level: expert", address: "Lille", daily_price: 15, user: nico, sport_category: "Ski")
+rossignol.photo.attach(io: rossi, filename: 'image.png', content_type: 'image/png')
+rossignol.save!
+
+rossi = URI.open("https://www.precisionski.fr/68970-zoom_popin/pack-ski-rossignol-experience-84ai-w-xp-w11-gw.jpg")
+rossignol = Equipment.new(title: "Ski Rossignol!!!", description: "Enjoy the puff this weekend with my skis. Brand new, 2021. Level: expert", address: "Barcelone", daily_price: 15, user: nico, sport_category: "Ski")
+rossignol.photo.attach(io: rossi, filename: 'image.png', content_type: 'image/png')
+rossignol.save!

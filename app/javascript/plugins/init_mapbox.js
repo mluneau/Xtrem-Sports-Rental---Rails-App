@@ -9,6 +9,7 @@ const buildMap = (mapElement) => {
 };
 
 const addMarkersToMap = (map, markers) => {
+  // mapMarkers = []
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
@@ -22,10 +23,14 @@ const addMarkersToMap = (map, markers) => {
     element.style.height = '25px';
 
     // Pass the element as an argument to the new marker
-    new mapboxgl.Marker(element)
+    const newMarker = new mapboxgl.Marker(element)
       .setLngLat([marker.lng, marker.lat])
       .setPopup(popup)
       .addTo(map);
+    // add event listener on newMarker
+    newMarker.getElement().dataset.markerId = marker.id;
+    newMarker.getElement().addEventListener('mousedown', (event) => toggleCardHighlighting(event))
+    // newMarker.getElement().addEventListener('mouseleave', (event) => toggleCardHighlighting(event))
   });
 };
 
@@ -44,5 +49,15 @@ const initMapbox = () => {
     fitMapToMarkers(map, markers);
   }
 };
+
+const toggleCardHighlighting = (event) => {
+  event.preventDefault()
+  const card = document.querySelector(`[data-equipment-id="${event.currentTarget.dataset.markerId}"]`);
+  const cards = document.querySelectorAll(".card-product");
+  console.log(cards)
+  cards.forEach(card => card.classList.remove('highlight'));
+  card.classList.toggle('highlight');
+  card.scrollIntoView({behavior: "smooth"});
+}
 
 export { initMapbox };

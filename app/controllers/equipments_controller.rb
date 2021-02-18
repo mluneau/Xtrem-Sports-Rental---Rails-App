@@ -15,7 +15,8 @@ class EquipmentsController < ApplicationController
         lat: equipment.latitude,
         lng: equipment.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { equipment: equipment }),
-        image_url: helpers.asset_url('logo.png')
+        image_url: helpers.asset_url('logo.png'),
+        id: equipment.id
       }
     end
   end
