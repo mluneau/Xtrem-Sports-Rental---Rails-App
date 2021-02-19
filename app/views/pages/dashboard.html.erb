@@ -129,14 +129,14 @@
                     <% if booking.status == "pending" %>
                     <div
                       class="ml-2 btn btn-sm btn-primary"
-                      data-update-status-target="button"
+                      data-update-status-target="acceptButton"
                       data-url="<%= accept_booking_path(booking) %>"
                       data-action="click->update-status#update">
                       Accept
                     </div>
                     <div
                       class="ml-2 btn btn-sm btn-primary"
-                      data-update-status-target="button"
+                      data-update-status-target="denyButton"
                       data-url="<%= deny_booking_path(booking) %>"
                       data-action="click->update-status#update">
                       Deny
