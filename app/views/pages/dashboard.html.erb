@@ -19,30 +19,35 @@
 <div class="tab-content" id="myTabContent">
 
   <div class="tab-pane fade <%= "show active" if profile_tab %> mt-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <h3 class="mt-4 mb-2 ml-4"> Profile: </h3>
-    <div class="visual-info">
+  <div class="card" style="width: 18rem;">
+    <div class="card-photo">
       <% if current_user.avatar.attached?  %>
         <img class="profile-picture" src="<%= cl_image_path current_user.avatar.key, height: 150, width: 150,  crop: :fill %>"/>
       <% else %>
         <img class="avatar" src="https://creai-grand-est.fr/bundles/admin/images/user-empty-avatar.png"/>
       <% end %>
     </div>
-    <div class="personal-info">
-      <%= @current_user.first_name %> <%= @current_user.last_name %>
-      <%= @current_user.bio %>
-      Favorite sports: 
-      <br>
+    <div class="card-body">
+      <h5 class="card-title"><%= @current_user.first_name %> <%= @current_user.last_name %></h5>
+      <p class="card-text"><%= @current_user.bio %></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">/insert picto here/ Favorite sport:
       <% @categories = [] %>
       <% @equipments.each do |equipment| %>    
           <% @categories.push(equipment.sport_category) %>
       <% end %>
+      <br>
       <% @categories = @categories.uniq %>
       <% @categories.each do |cat| %>
         <%= cat %>
-        <br>
       <% end %>
-      
-    </div>
+      </li>
+      <li class="list-group-item">/insert picto here/ Spot:
+      <%  %>
+      </li>
+    </ul>
+  </div>
 
   </div>
 
