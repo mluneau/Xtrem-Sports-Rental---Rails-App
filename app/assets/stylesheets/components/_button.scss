@@ -46,3 +46,11 @@
   background: #1BCB7F;
   color: white;
 }
+
+#homebtncolor {
+  background-color: white;
+  color: grey;
+  &:hover {
+    opacity: 0.2;
+  }
+}
