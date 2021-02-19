@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = [ "status", "button"]
+  static targets = [ "status", "acceptButton", "denyButton"]
 
   connect() {
     console.log("Hello!")
@@ -16,7 +16,8 @@ export default class extends Controller {
       .then((data) => {
         if (data.status) {
           this.statusTarget.innerText = data.type
-          this.buttonTargets.forEach(button => button.classList.add("d-none"))
+          this.acceptButtonTarget.classList.add("d-none")
+          this.denyButtonTarget.classList.add("d-none")
         }
       })
   }
