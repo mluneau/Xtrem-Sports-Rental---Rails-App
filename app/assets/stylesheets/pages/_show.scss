@@ -4,13 +4,18 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 0 auto;
+  align-content: center;
+  margin-top: 20px;
   height: fit-content;
 }
 
 .card-equipment > img {
   height: 400px;
-  width: 100%;
+  width: auto;
   object-fit: cover;
+  padding: 15px;
+  margin: 0 auto;
+  display: block;
 }
 
 .card-equipment h2 {
@@ -44,4 +49,8 @@
 .pl-5 {
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.calendar{
+  margin-top: 60px;
 }
