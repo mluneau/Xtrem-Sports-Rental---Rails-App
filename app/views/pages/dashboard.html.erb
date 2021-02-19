@@ -12,8 +12,8 @@
 
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active mt-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <h3 class="mt-4 mb-2 ml-4"> Profile: </h3> 
-    <div class="card-profile ml-4">    
+    <h3 class="mt-4 mb-2 ml-4"> Profile: </h3>
+    <div class="card-profile ml-4">
       <% if current_user.avatar.attached?  %>
         <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"   aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, height: 300, width: 300, crop: :fill %>" />
       <% else %>
@@ -22,10 +22,10 @@
       <br>
       <%= @current_user.first_name %> <%= @current_user.last_name %>
     </div>
-  
+
   </div>
-  
-  
+
+
   <div class="tab-pane fade mt-5" id="my_bookings" role="tabpanel" aria-labelledby="my_bookings-tab">
   <h1>My Bookings</h1>
 
@@ -46,12 +46,13 @@
     <% end %>
 
   </div>
-  
-  
-  
-  
-  <div class="tab-pane fade mt-5" id="my_equipment" role="tabpanel" aria-labelledby="my_equipment-tab">
-    <h3 class="mt-4 mb-2 ml-4"> My equipment: </h3> 
+
+
+
+
+  <div class="tab-pane fade mt-5 container" id="my_equipment" role="tabpanel" aria-labelledby="my_equipment-tab">
+
+    <h3 class="mt-4 mb-2 ml-4"> My equipment: </h3>
     <% @equipments.each do |equipment| %>
         <div class="card-product mt-2 ml-4">
           <% if equipment.photo.attached? %>
@@ -60,11 +61,38 @@
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
           <% end %>
 
-          <div class="card-product-infos">
+          <div class="card-product-infos flex-grow-1">
             <h2><%= link_to equipment.title, equipment_path(equipment) %></h2>
             <p><%= equipment.description %></p>
           </div>
+          <button class="btn btn-sm btn-primary mr-4" type="button" data-toggle="collapse" data-target="#collapseExample-<%= equipment.id %>" aria-expanded="false" aria-controls="collapseExample-<%= equipment.id %>">
+            View bookings
+          </button>
         </div>
+        <div class="collapse" id="collapseExample-<%= equipment.id %>">
+            <div class="card-product card-body ml-4 border-top">
+              <ul>
+                <% equipment.bookings.each do |booking| %>
+                  <li class="d-flex">
+                    <div class="flex-grow-1">
+                      <strong>Booker </strong>
+                      <%= booking.user.first_name%> <%= booking.user.last_name %> -
+                      <strong>Start date </strong>
+                       <%= booking.start_date.day %>/<%= booking.start_date.month %>/<%= booking.start_date.year %> -
+                      <strong>Duration: </strong>
+                      <%= (booking.end_date - booking.start_date).to_i/(3600*24) %> days -
+                      <strong>Total price: </strong>
+                      <%= (booking.end_date - booking.start_date).to_i/(3600*24) * equipment.daily_price %> € -
+                      <strong>Status: </strong>
+                      <%= booking.status.capitalize %>
+                    </div>
+                    <%= link_to "Accept", accept_booking_path(booking), method: :patch, remote: true, class: 'ml-2' %>
+                    <%= link_to "Deny", deny_booking_path(booking), method: :patch, class: 'ml-2'  %>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
 
     <% end %>
 
