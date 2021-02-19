@@ -19,9 +19,9 @@
           <%= link_to "Share my gear", new_equipment_path(), class: "nav-link" %>
         <% end %>
       </li>
-    
+
       <!-- <li><%=  current_user.first_name if user_signed_in? %></li> -->
-    
+
       <li class="nav-item dropdown">
         <% if user_signed_in? && current_user.avatar.attached?  %>
           <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, height: 300, width: 300, crop: :fill %>" />
@@ -32,7 +32,12 @@
           <%= link_to "Profile", "/dashboard?tab=profile", class: "dropdown-item" %>
           <%= link_to "Bookings", "/dashboard?tab=bookings", class: "dropdown-item" %>
           <%= link_to "Equipment", "/dashboard?tab=equipment", class: "dropdown-item" %>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <% if user_signed_in? %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <% else %>
+            <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
+          <% end %>
+
           </div>
       </li>
     </ul>

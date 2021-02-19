@@ -1,4 +1,4 @@
-<% 
+<%
   profile_tab = params[:tab] == "profile" || !params[:tab].present?
   bookings_tab = params[:tab] == "bookings"
   equipment_tab = params[:tab] == "equipment"
@@ -19,8 +19,8 @@
 <div class="tab-content" id="myTabContent">
 
   <div class="tab-pane fade <%= "show active" if profile_tab %> mt-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <h3 class="mt-4 mb-2 ml-4"> Profile: </h3> 
-    <div class="card-profile ml-4">    
+    <h3 class="mt-4 mb-2 ml-4"> Profile: </h3>
+    <div class="card-profile ml-4">
       <% if current_user.avatar.attached?  %>
         <img class="avatar-profile" src="<%= cl_image_path current_user.avatar.key, height: 300, width: 300,  crop: :fill %>" border-radius= 50px />
       <% else %>
@@ -31,14 +31,14 @@
     </div>
 
   </div>
-  
+
   <!-- Bookings -->
 
-  <div class="tab-pane fade <%= "show active" if bookings_tab %> mt-5" id="my_bookings" role="tabpanel" aria-labelledby="my_bookings-tab">
+  <div class="container tab-pane fade <%= "show active" if bookings_tab %> mt-5" id="my_bookings" role="tabpanel" aria-labelledby="my_bookings-tab">
     <h1 class="mt-2 ml-4">My Bookings</h1>
 
     <% @bookings.each do |booking| %>
-    
+
     <div class="container">
       <div class="row">
 
@@ -59,19 +59,21 @@
         <div class="card-product mt-2 ml-4 col-4">
           <p><strong><%= booking.equipment.daily_price %>€ / day</strong></p>
         </div>
-      
+
       </div>
     </div>
-    
+
     <% end %>
 
   </div>
-  
+
    <!-- Equipment -->
-  
-  
-  <div class="tab-pane fade <%= "show active" if equipment_tab %> mt-5" id="my_equipment" role="tabpanel" aria-labelledby="my_equipment-tab">
-    <h3 class="mt-4 mb-2 ml-4"> My equipment: </h3> 
+
+
+  <div class="container tab-pane fade <%= "show active" if equipment_tab %> mt-5" id="my_equipment" role="tabpanel" aria-labelledby="my_equipment-tab">
+
+    <h3 class="mt-4 mb-2 ml-4"> My equipment: </h3>
+
     <% @equipments.each do |equipment| %>
         <div class="card-product mt-2 ml-4">
           <% if equipment.photo.attached? %>
