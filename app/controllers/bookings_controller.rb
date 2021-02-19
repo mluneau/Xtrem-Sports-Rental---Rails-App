@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.equipment = @equipment
     if @booking.save
+      flash.notice = "Booking created !"
       redirect_to equipment_path(@equipment)
     else
       render :new
