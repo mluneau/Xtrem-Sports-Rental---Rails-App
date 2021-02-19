@@ -1,36 +1,49 @@
+<% 
+  profile_tab = params[:tab] == "profile" || !params[:tab].present?
+  bookings_tab = params[:tab] == "bookings"
+  equipment_tab = params[:tab] == "equipment"
+%>
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
+    <a class="nav-link <%= "active" if profile_tab %>" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="<%= profile_tab %>">Profile</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="my_bookings-tab" data-toggle="tab" href="#my_bookings" role="tab" aria-controls="my_bookings" aria-selected="false">My Bookings</a>
+    <a class="nav-link <%= "active" if bookings_tab %>" id="my_bookings-tab" data-toggle="tab" href="#my_bookings" role="tab" aria-controls="my_bookings" aria-selected="<%= bookings_tab %>">My Bookings</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="my_equipment-tab" data-toggle="tab" href="#my_equipment" role="tab" aria-controls="my_equipment" aria-selected="false">My equipment</a>
+    <a class="nav-link <%= "active" if equipment_tab %>" id="my_equipment-tab" data-toggle="tab" href="#my_equipment" role="tab" aria-controls="my_equipment" aria-selected="<%= bookings_tab %>">My equipment</a>
   </li>
 </ul>
 
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active mt-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <h3 class="mt-4 mb-2 ml-4"> Profile: </h3>
-    <div class="card-profile ml-4">
+
+  <div class="tab-pane fade <%= "show active" if profile_tab %> mt-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <h3 class="mt-4 mb-2 ml-4"> Profile: </h3> 
+    <div class="card-profile ml-4">    
       <% if current_user.avatar.attached?  %>
-        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"   aria-expanded="false" src="<%= cl_image_path current_user.avatar.key, height: 300, width: 300, crop: :fill %>" />
+        <img class="avatar-profile" src="<%= cl_image_path current_user.avatar.key, height: 300, width: 300,  crop: :fill %>" border-radius= 50px />
       <% else %>
-        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"   aria-expanded="false" src="https://creai-grand-est.fr/bundles/admin/images/user-empty-avatar.png" />
+        <img class="avatar" src="https://creai-grand-est.fr/bundles/admin/images/user-empty-avatar.png"/>
       <% end %>
       <br>
       <%= @current_user.first_name %> <%= @current_user.last_name %>
     </div>
 
   </div>
+  
+  <!-- Bookings -->
 
+  <div class="tab-pane fade <%= "show active" if bookings_tab %> mt-5" id="my_bookings" role="tabpanel" aria-labelledby="my_bookings-tab">
+    <h1 class="mt-2 ml-4">My Bookings</h1>
 
-  <div class="tab-pane fade mt-5" id="my_bookings" role="tabpanel" aria-labelledby="my_bookings-tab">
-  <h1>My Bookings</h1>
+    <% @bookings.each do |booking| %>
+    
+    <div class="container">
+      <div class="row">
 
-  <% @bookings.each do |booking| %>
-        <div class="card-product mt-2 ml-4">
+        <div class="card-product mt-2 ml-4 col-6">
+
           <% if booking.equipment.photo.attached? %>
             <%= cl_image_tag booking.equipment.photo.key %>
           <% else %>
@@ -38,21 +51,27 @@
           <% end %>
 
           <div class="card-product-infos">
-            <h2><%= link_to booking.equipment.title, equipment_path(booking) %></h2>
+            <h2><%= booking.equipment.title %></h2>
             <p><%= booking.equipment.description %></p>
           </div>
         </div>
 
+        <div class="card-product mt-2 ml-4 col-4">
+          <p><strong><%= booking.equipment.daily_price %>€ / day</strong></p>
+        </div>
+      
+      </div>
+    </div>
+    
     <% end %>
 
   </div>
-
-
-
-
-  <div class="tab-pane fade mt-5 container" id="my_equipment" role="tabpanel" aria-labelledby="my_equipment-tab">
-
-    <h3 class="mt-4 mb-2 ml-4"> My equipment: </h3>
+  
+   <!-- Equipment -->
+  
+  
+  <div class="tab-pane fade <%= "show active" if equipment_tab %> mt-5" id="my_equipment" role="tabpanel" aria-labelledby="my_equipment-tab">
+    <h3 class="mt-4 mb-2 ml-4"> My equipment: </h3> 
     <% @equipments.each do |equipment| %>
         <div class="card-product mt-2 ml-4">
           <% if equipment.photo.attached? %>
