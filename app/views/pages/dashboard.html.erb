@@ -107,6 +107,7 @@
                       <strong>Status: </strong>
                       <span data-update-status-target="status"><%= booking.status.capitalize %></span>
                     </div>
+                    <% if booking.status == "pending" %>
                     <div
                       class="ml-2 btn btn-sm btn-primary"
                       data-update-status-target="button"
@@ -121,6 +122,9 @@
                       data-action="click->update-status#update">
                       Deny
                     </div>
+
+                    <% end %>
+
                     </li>
                 <% end %>
               </ul>
