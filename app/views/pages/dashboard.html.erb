@@ -19,36 +19,53 @@
 <div class="tab-content" id="myTabContent">
 
   <div class="tab-pane fade <%= "show active" if profile_tab %> mt-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-  <div class="card mt-2 ml-4 col-6" style="width: 18rem;">
-    <div class="card-photo">
-      <% if current_user.avatar.attached?  %>
-        <img class="profile-picture" src="<%= cl_image_path current_user.avatar.key, height: 150, width: 150,  crop: :fill %>"/>
-      <% else %>
-        <img class="avatar" src="https://creai-grand-est.fr/bundles/admin/images/user-empty-avatar.png"/>
-      <% end %>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title"><%= @current_user.first_name %> <%= @current_user.last_name %></h5>
-      <p class="card-text"><%= @current_user.bio %></p> <!-- static bio -->
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">/insert picto here/ Favorite sport:
-      <% @categories = [] %>
-      <% @equipments.each do |equipment| %>    
-          <% @categories.push(equipment.sport_category) %>
-      <% end %>
-      <br>
-      <% @categories = @categories.uniq %>
-      <% @categories.each do |cat| %>
-        <%= cat %>
-      <% end %>
-      </li>
-      <li class="list-group-item">/insert picto here/ Spot:
-      <!-- Fav spot => adress -->
-      </li>
-    </ul>
-  </div>
 
+    <div class="row px-30 col-8 d-flex space-between">
+      <div class="card mt-2 ml-4 px-30">
+        <div class="col-10">
+          
+          <div class="card-photo pl-3 pt-3">
+            <% if current_user.avatar.attached?  %>
+              <img class="profile-picture" src="<%= cl_image_path current_user.avatar.key, height: 150, width: 150,  crop: :fill %>"/>
+            <% else %>
+              <img class="avatar" src="https://creai-grand-est.fr/bundles/admin/images/user-empty-avatar.png"/>
+            <% end %>
+          </div>
+        
+          <div class="card-body">
+            <h5 class="card-title"><%= @current_user.first_name %> <%= @current_user.last_name %></h5>
+          </div>
+        
+        </div>
+
+        <div class="col-10">
+          <p class="card-text pl-3"><%= @current_user.bio %>Hi everybody, I am 39 years old, passionate about mountain and puff since my youngest age. I love above all sharing tips and meeting awesome people. Feel free to get in touch!
+          See y'all on the slopes</p> <!-- static bio -->
+        </div>
+        
+        <div class="col-10">
+        
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Favorite sport:<i class="fas fa-skiing"></i>
+            <% @categories = [] %>
+            <% @equipments.each do |equipment| %>    
+                <% @categories.push(equipment.sport_category) %>
+            <% end %>
+            <br>
+            <% @categories = @categories.uniq %>
+            <% @categories.each do |cat| %>
+              <%= cat %>
+            <% end %>
+            </li>
+            <li class="list-group-item">Spot:<i class="fas fa-mountain"></i>
+            <!-- Fav spot => adress -->
+            </li>
+          </ul>
+        
+        </div>
+    
+      </div>
+    </div>
   </div>
 
   <!-- Bookings -->
