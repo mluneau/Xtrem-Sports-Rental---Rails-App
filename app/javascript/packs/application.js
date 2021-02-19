@@ -29,3 +29,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initFlatPickr();
 })
+
+import "controllers"

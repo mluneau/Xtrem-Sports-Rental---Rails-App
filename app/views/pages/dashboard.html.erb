@@ -90,8 +90,8 @@
             View bookings
           </button>
         </div>
-        <div class="collapse" id="collapseExample-<%= equipment.id %>">
-            <div class="card-product card-body ml-4 border-top">
+        <div class="collapse ml-2" id="collapseExample-<%= equipment.id %>">
+            <div class="card-product card-body ml-4 border-top" data-controller="update-status">
               <ul>
                 <% equipment.bookings.each do |booking| %>
                   <li class="d-flex align-items-center justify-content-between mt-1">
@@ -105,10 +105,22 @@
                       <strong>Total price: </strong>
                       <%= (booking.end_date - booking.start_date).to_i/(3600*24) * equipment.daily_price %> € -
                       <strong>Status: </strong>
-                      <%= booking.status.capitalize %>
+                      <span data-update-status-target="status"><%= booking.status.capitalize %></span>
                     </div>
-                    <%= button_to "Accept", accept_booking_path(booking), disabled: booking.status == "accepted", method: :patch, class: 'ml-2 btn btn-sm btn-primary' %>
-                    <%= button_to "Deny", deny_booking_path(booking), disabled: booking.status == "denied", method: :patch, class: 'ml-2 btn btn-sm btn-primary'  %>
+                    <div
+                      class="ml-2 btn btn-sm btn-primary"
+                      data-update-status-target="button"
+                      data-url="<%= accept_booking_path(booking) %>"
+                      data-action="click->update-status#update">
+                      Accept
+                    </div>
+                    <div
+                      class="ml-2 btn btn-sm btn-primary"
+                      data-update-status-target="button"
+                      data-url="<%= deny_booking_path(booking) %>"
+                      data-action="click->update-status#update">
+                      Deny
+                    </div>
                     </li>
                 <% end %>
               </ul>

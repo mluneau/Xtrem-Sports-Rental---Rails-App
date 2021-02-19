@@ -23,17 +23,22 @@ class BookingsController < ApplicationController
   end
 
   def accept
+    render json: { status: false } and return unless @booking.status == "pending"
+
     authorize @booking
     @booking.status = "accepted"
-    @booking.save
-    redirect_to dashboard_path
+    is_booking_saved = @booking.save
+    render json: { status: is_booking_saved, type: "Accepted" }
   end
 
   def deny
+    render json: { status: false } and return unless @booking.status == "pending"
+
     authorize @booking
     @booking.status = "denied"
     @booking.save
-    redirect_to dashboard_path
+    is_booking_saved = @booking.save
+    render json: { status: is_booking_saved, type: "Denied" }
   end
 
   private
