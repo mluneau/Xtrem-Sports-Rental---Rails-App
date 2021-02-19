@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :find_equipment, only: [:new, :create]
-
+  before_action :find_booking, only: [:accept, :deny]
   def new
     @booking = Booking.new
     authorize @booking
@@ -22,10 +22,28 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
+  def accept
+    authorize @booking
+    @booking.status = "accepted"
+    @booking.save
+    redirect_to dashboard_path
+  end
+
+  def deny
+    authorize @booking
+    @booking.status = "denied"
+    @booking.save
+    redirect_to dashboard_path
+  end
+
   private
 
   def find_equipment
     @equipment = Equipment.find(params[:equipment_id])
+  end
+
+  def find_booking
+    @booking = Booking.find(params[:id])
   end
 
   def booking_params

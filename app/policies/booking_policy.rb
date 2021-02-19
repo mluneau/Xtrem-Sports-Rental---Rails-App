@@ -11,4 +11,12 @@ class BookingPolicy < ApplicationPolicy
   def show?
     record.user == user || record.equipment.user == user
   end
+
+  def accept?
+    record.equipment.user == user
+  end
+
+  def deny?
+    record.equipment.user == user
+  end
 end

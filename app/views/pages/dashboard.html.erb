@@ -17,6 +17,7 @@
 </ul>
 
 <div class="tab-content" id="myTabContent">
+
   <div class="tab-pane fade <%= "show active" if profile_tab %> mt-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <h3 class="mt-4 mb-2 ml-4"> Profile: </h3> 
     <div class="card-profile ml-4">    
@@ -28,7 +29,7 @@
       <br>
       <%= @current_user.first_name %> <%= @current_user.last_name %>
     </div>
-  
+
   </div>
   
   <!-- Bookings -->
@@ -79,11 +80,38 @@
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
           <% end %>
 
-          <div class="card-product-infos">
+          <div class="card-product-infos flex-grow-1">
             <h2><%= link_to equipment.title, equipment_path(equipment) %></h2>
             <p><%= equipment.description %></p>
           </div>
+          <button class="btn btn-sm btn-primary mr-4" type="button" data-toggle="collapse" data-target="#collapseExample-<%= equipment.id %>" aria-expanded="false" aria-controls="collapseExample-<%= equipment.id %>">
+            View bookings
+          </button>
         </div>
+        <div class="collapse" id="collapseExample-<%= equipment.id %>">
+            <div class="card-product card-body ml-4 border-top">
+              <ul>
+                <% equipment.bookings.each do |booking| %>
+                  <li class="d-flex align-items-center justify-content-between mt-1">
+                    <div class="flex-grow-1">
+                      <strong>Booker </strong>
+                      <%= booking.user.first_name%> <%= booking.user.last_name %> -
+                      <strong>Start date </strong>
+                       <%= booking.start_date.day %>/<%= booking.start_date.month %>/<%= booking.start_date.year %> -
+                      <strong>Duration: </strong>
+                      <%= (booking.end_date - booking.start_date).to_i/(3600*24) %> days -
+                      <strong>Total price: </strong>
+                      <%= (booking.end_date - booking.start_date).to_i/(3600*24) * equipment.daily_price %> € -
+                      <strong>Status: </strong>
+                      <%= booking.status.capitalize %>
+                    </div>
+                    <%= button_to "Accept", accept_booking_path(booking), disabled: booking.status == "accepted", method: :patch, class: 'ml-2 btn btn-sm btn-primary' %>
+                    <%= button_to "Deny", deny_booking_path(booking), disabled: booking.status == "denied", method: :patch, class: 'ml-2 btn btn-sm btn-primary'  %>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
 
     <% end %>
 
